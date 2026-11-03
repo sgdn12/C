@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+
+int main(void)
+{
+    int score[3][3] = {
+        {80, 90, 70},
+        {85, 95, 75},
+        {100, 80, 90}
+    };
+
+    char *subject[3] = {"C", "Python", "HTML"};
+
+    for (int i = 0; i < 3; i++)
+    {
+        int sum = 0;
+
+        printf("학생 %d\n", i + 1);
+
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%s: %d점\n", subject[j], score[i][j]);
+            sum += score[i][j];
+        }
+
+        printf("총점: %d점\n", sum);
+        printf("평균: %.2f점\n\n", sum / 3.0);
+    }
+
+    return 0;
+}
