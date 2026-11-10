@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[200];
+    char word[50];
+
+    printf("문장을 입력하세요: ");
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = '\0';
+
+    printf("검색할 단어를 입력하세요: ");
+    fgets(word, sizeof(word), stdin);
+    word[strcspn(word, "\n")] = '\0';
+
+    char *result = strstr(text, word);
+
+    if (result != NULL)
+    {
+        printf("단어를 찾았습니다!\n");
+        printf("위치: %d번째\n", (int)(result - text) + 1);
+    }
+    else
+    {
+        printf("단어를 찾을 수 없습니다.\n");
+    }
+
+    return 0;
+}
