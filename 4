@@ -1,0 +1,46 @@
+
+#include <stdio.h>
+
+struct Student {
+    char name[20];
+    int korean;
+    int english;
+    int math;
+    float average;
+};
+
+void calculateAverage(struct Student *s)
+{
+    s->average = (s->korean + s->english + s->math) / 3.0;
+}
+
+void printStudent(struct Student s)
+{
+    printf("%s\t%d\t%d\t%d\t%.1f\n",
+        s.name, s.korean, s.english, s.math, s.average);
+}
+
+int main()
+{
+    struct Student students[3] = {
+        {"철수", 90, 85, 95, 0},
+        {"영희", 80, 90, 85, 0},
+        {"민수", 70, 75, 80, 0}
+    };
+
+    int i;
+
+    printf("===== 학생 성적 관리 프로그램 =====\n");
+
+    for (i = 0; i < 3; i++) {
+        calculateAverage(&students[i]);
+    }
+
+    printf("이름\t국어\t영어\t수학\t평균\n");
+
+    for (i = 0; i < 3; i++) {
+        printStudent(students[i]);
+    }
+
+    return 0;
+}
