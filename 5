@@ -1,28 +1,34 @@
-1  #include <stdio.h>
-2
-3  enum Grade { F, C, A };
-4
-5  struct Student {
-6      char name[20];
-7      int score;
-8      enum Grade grade;
-9  };
-10
-11 int main(void) {
-12     struct Student s1 = {"김철수", 95};
-13
-14     if (s1.score >= 90)
-15         s1.grade = A;
-16     else
-17         s1.grade = C;
-18
-19     printf("이름: %s\n", s1.name);
-20     printf("점수: %d\n", s1.score);
-21
-22     if (s1.grade == A)
-23         printf("학점: A\n");
-24     else
-25         printf("학점: C\n");
-26
-27     return 0;
-28 }
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+enum Menu { COFFEE = 1, TEA, JUICE };
+
+int getPrice(enum Menu m) {
+    switch (m) {
+        case COFFEE: return 3000;
+        case TEA:    return 2500;
+        case JUICE:  return 3500;
+    }
+    return 0;
+}
+
+int main(void) {
+    int choice;
+    int count;
+
+    printf("1.Coffee  2.Tea  3.Juice\n");
+    printf("메뉴 번호: ");
+    scanf("%d", &choice);
+    printf("수량: ");
+    scanf("%d", &count);
+
+    enum Menu order = (enum Menu)choice;
+    int price = getPrice(order);
+
+    if (price == 0)
+        printf("없는 메뉴입니다.\n");
+    else
+        printf("합계: %d원\n", price * count);
+
+    return 0;
+}
